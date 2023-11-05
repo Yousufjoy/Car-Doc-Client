@@ -1,6 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import { getAuth, signOut } from "firebase/auth";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <nav className="flex items-center justify-between flex-wrap  py-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -14,6 +27,11 @@ const NavBar = () => {
           <Link to="/"> Home</Link>
           <Link to="/about"> About</Link>
           <Link to="/services"> Services</Link>
+          {user?.email ? (
+            <Link onClick={handleLogOut}> Logout</Link>
+          ) : (
+            <Link to="/login"> Login </Link>
+          )}
         </div>
       </div>
 
