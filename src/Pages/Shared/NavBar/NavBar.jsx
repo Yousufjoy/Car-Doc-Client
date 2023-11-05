@@ -28,7 +28,10 @@ const NavBar = () => {
           <Link to="/about"> About</Link>
           <Link to="/services"> Services</Link>
           {user?.email ? (
-            <Link onClick={handleLogOut}> Logout</Link>
+            <>
+              <Link to="/bookings"> My Bookings</Link>
+              <Link onClick={handleLogOut}> Logout</Link>
+            </>
           ) : (
             <Link to="/login"> Login </Link>
           )}
