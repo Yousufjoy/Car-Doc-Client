@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
   const { title, img, price, _id } = service;
-  console.log(_id);
+
   return (
     <div>
       <div className="max-w-sm rounded overflow-hidden shadow-lg">
