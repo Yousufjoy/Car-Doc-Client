@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,8 +17,15 @@ const Login = () => {
 
     loginUser(email, password)
       .then((result) => {
-        console.log("Successfully Logged in", result.user);
-        navigate(location?.state ? location?.state : "/");
+        // console.log("Successfully Logged in", result.user);
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const user = { email };
+        //navigate(location?.state ? location?.state : "/");
+        //get access token
+        axios.post("http://localhost:5000/jwt", user).then((res) => {
+          console.log(res.data);
+        });
       })
       .then((error) => {
         console.log(error);
