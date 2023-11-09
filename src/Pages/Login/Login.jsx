@@ -84,3 +84,5 @@ const Login = () => {
 };
 
 export default Login;
+
+//JWT token secret and set token to http only cookie
