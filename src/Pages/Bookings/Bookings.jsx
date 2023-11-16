@@ -13,11 +13,6 @@ const Bookings = () => {
     axios.get(url, { withCredentials: true }).then((res) => {
       setBookings(res.data);
     });
-    // fetch(url)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setBookings(data);
-    //   });
   }, [url]);
 
   const handleDelete = (id) => {
